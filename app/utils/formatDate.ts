@@ -9,7 +9,17 @@ type Options = Parameters<typeof format>[2]
 
 const getLocale = (): Locale => {
   const locale = I18n.currentLocale().split("-")[0]
-  return locale === "ar" ? ar : locale === "ko" ? ko : en
+
+  switch (locale) {
+    case "ar":
+      return ar
+
+    case "ko":
+      return ko
+
+    default:
+      return en
+  }
 }
 
 export const formatDate = (date: string, dateFormat?: string, options?: Options) => {
